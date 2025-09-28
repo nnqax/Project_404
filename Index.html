@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 404 - Uncover the Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #39ff14;
+            --bg: #000000;
+            --neon-green: #39ff14;
+            --window-bg: #0a0a0a;
+            --text-color: #39ff14;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+            z-index: 400;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.10626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.10626; }
+            30% { opacity: 0.18128; }
+            35% { opacity: 0.23604; }
+        }
+
+        .crt::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.02);
+            opacity: 0;
+            z-index: 400;
+            pointer-events: none;
+            animation: flicker 0.2s infinite;
+        }
+
+        .desktop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(var(--neon-green) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+        }
+
+        .icon {
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .icon img {
+            width: 64px;
+            height: 64px;
+            filter: drop-shadow(0 0 5px var(--neon-green));
+        }
+
+        .icon h3 {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .mascot {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .mascot img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px var(--neon-green));
+        }
+
+        .window {
+            position: absolute;
+            background: var(--window-bg);
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            display: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .windownav {
+            background: var(--neon-green);
+            color: #000;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--neon-green);
+            cursor: move;
+        }
+
+        .windownav h3 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .x {
+            cursor: pointer;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .x:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .web-bar {
+            background: #111;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tabs h5 {
+            margin: 0;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-right: 1px solid var(--neon-green);
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tabs h5:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .tabs h5.active {
+            background: var(--neon-green);
+            color: #000;
+        }
+
+        .browser {
+            padding: 4px 12px;
+            background: #111;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .browser h3 {
+            margin: 0;
+            font-size: 11px;
+            color: var(--neon-green);
+        }
+
+        .content {
+            padding: 20px;
+            height: calc(100% - 100px);
+            overflow-y: auto;
+        }
+
+        .content h4 {
+            color: var(--neon-green);
+            border-bottom: 1px solid var(--neon-green);
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        .content section {
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid var(--neon-green);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .start-menu {
+            background: var(--neon-green);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .start-menu-content {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .start-menu-content h4 {
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .start-menu-content a {
+            display: block;
+            padding: 5px 0;
+            color: var(--neon-green);
+        }
+
+        .clock {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--neon-green);
+        }
+
+        /* FAQ Styles */
+        .faq-header {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+
+        .faq-header h1 {
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--neon-green);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            background-color: rgba(10, 30, 10, 0.7);
+        }
+
+        .faq-item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--neon-green);
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            padding: 0 15px 15px;
+            max-height: 1000px;
+        }
+
+        .question-container {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(57, 255, 20, 0.1);
+            border-radius: 5px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            color: var(--neon-green);
+            margin: 10px 0;
+        }
+
+        .submit-btn {
+            background: var(--neon-green);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background: #2ae000;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #0f0;
+            color: #0f0;
+        }
+
+        .feedback.incorrect {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #f00;
+            color: #f00;
+        }
+
+        /* Case Styles */
+        .case-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .case-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+        }
+
+        .case-file {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        /* Cyberpunk scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-green);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2ae000;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="crt"></div>
+    <div class="desktop">
+        <div class="icon-container">
+            <!-- System icon on top -->
+            <div class="icon" onclick="openWindow('system')">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxwYXRoIGQ9Ik0xNiAxNkg0OFY0OEgxNlYxNloiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yNCAyNEg0MFY0MEgyNFYyNFoiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xNiAxNkwzMiA4IiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="System">
+                <h3>System</h3>
+            </div>
+
+            <!-- Mascot in the middle -->
+            <div class="mascot">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMDAwMDAwIi8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjQwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI0NSIgY3k9IjQ1IiByPSI4IiBmaWxsPSIjMzlmZjE0Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNDUiIHI9IjgiIGZpbGw9IiMzOWZmMTQiLz4KPHBhdGggZD0iTTQ1IDgwUTU1IDkwIDc1IDgwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Mascot">
+            </div>
+
+            <!-- Learn and Cases icons side by side -->
+            <div class="icon-row">
+                <!-- Cases icon on the left -->
+                <div class="icon" onclick="openWindow('cases')">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjIwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMjQgMjRINDBWMzZIMjRWMjRaIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMjggMjhIMzZWMzZIMjhWMjhaIiBmaWxsPSIjMzlmZjE0Ii8+Cjwvc3ZnPgo=" alt="Cases">
+                    <h3>Cases</h3>
+                </div>
+
+                <!-- Learn icon on the right -->
+                <div class="icon" onclick="openWindow('learn')">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxwYXRoIGQ9Ik0xMiAxMkg1MlY1MkgxMlYxMloiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yMCAyMEg0NFY0NEgyMFYyMFoiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzNlYzNkgyOFYyOFoiIGZpbGw9IiMzOWZmMTQiLz4KPHBhdGggZD0iTTIwIDI4TDI4IDM2IiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="Learn">
+                    <h3>Learn</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Window -->
+        <div id="system" class="window" style="width: 800px; height: 600px; top: 50px; left: 200px;">
+            <div class="windownav">
+                <h3>System</h3>
+                <div class="x" onclick="closeWindow('system')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="tabs">
+                    <h5 class="active" onclick="openTab('about-tab')">About & Purpose</h5>
+                    <h5 onclick="openTab('sitemap-tab')">Site Map</h5>
+                    <h5 onclick="openTab('team-tab')">Our Team</h5>
+                </div>
+                <div class="browser">
+                    <h3>cyberlearn://system/about</h3>
+                </div>
+            </div>
+            <div class="content" id="about-tab">
+                <h4>Our Mission: Fighting Digital Deception</h4>
+                <section>
+                    <p>In today's digital world, cyber threats have evolved beyond simple viruses to sophisticated campaigns of misinformation, automated bots, and coordinated phishing attacks.</p>
+                    <p>Our platform transforms cybersecurity education into an engaging, interactive experience where you learn by doing. Through realistic scenarios and hands-on challenges, you'll develop the skills needed to:</p>
+                    <ul>
+                        <li>Detect and analyze propaganda campaigns</li>
+                        <li>Identify and track automated bot networks</li>
+                        <li>Verify information using OSINT techniques</li>
+                        <li>Understand cryptographic principles for data verification</li>
+                        <li>Analyze digital evidence using forensic methods</li>
+                    </ul>
+                </section>
+
+                <h4>Why This Matters</h4>
+                <section>
+                    <p>Every day, ordinary internet users face:</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="border: 1px solid #39ff14; padding: 8px;"><strong>Propaganda</strong></td>
+                            <td style="border: 1px solid #39ff14; padding: 8px;">Coordinated misinformation campaigns</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #39ff14; padding: 8px;"><strong>Bot Networks</strong></td>
+                            <td style="border: 1px solid #39ff14; padding: 8px;">Automated accounts manipulating public opinion</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #39ff14; padding: 8px;"><strong>Phishing</strong></td>
+                            <td style="border: 1px solid #39ff14; padding: 8px;">Deceptive attempts to steal sensitive information</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #39ff14; padding: 8px;"><strong>Fake News</strong></td>
+                            <td style="border: 1px solid #39ff14; padding: 8px;">Deliberately false information spread as news</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+
+            <div class="content" id="sitemap-tab" style="display: none;">
+                <h4>Site Navigation Map</h4>
+                <section>
+                    <h5>Desktop Applications:</h5>
+                    <ul>
+                        <li><strong>System</strong> - About, site map, and team information</li>
+                        <li><strong>Learn</strong> - Educational content in OSINT, Cryptography, and Forensics</li>
+                        <li><strong>Cases</strong> - Monthly cybersecurity challenges and scenarios</li>
+                    </ul>
+                </section>
+                <section>
+                    <h5>Learning Path:</h5>
+                    <p>Start with System → Progress through Learn modules → Apply knowledge in Cases</p>
+                </section>
+            </div>
+
+            <div class="content" id="team-tab" style="display: none;">
+                <h4>Our Cybersecurity Team</h4>
+                <section>
+                    <h5>Team Lead - Security Architect</h5>
+                    <p>10+ years in cybersecurity, specializes in threat intelligence and digital forensics.</p>
+                </section>
+                <section>
+                    <h5>OSINT Specialist - Intelligence Analyst</h5>
+                    <p>Expert in open-source intelligence gathering and misinformation tracking.</p>
+                </section>
+                <section>
+                    <h5>Crypto Expert - Cryptography Researcher</h5>
+                    <p>Focuses on cryptographic verification and data integrity analysis.</p>
+                </section>
+                <section>
+                    <h5>Forensics Lead - Digital Investigator</h5>
+                    <p>Specializes in digital evidence collection and forensic analysis.</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Learn Window -->
+        <div id="learn" class="window" style="width: 900px; height: 700px; top: 80px; left: 150px;">
+            <div class="windownav">
+                <h3>Learn - Cybersecurity Modules</h3>
+                <div class="x" onclick="closeWindow('learn')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="tabs">
+                    <h5 class="active" onclick="openLearnTab('osint-tab')">OSINT</h5>
+                    <h5 onclick="openLearnTab('crypto-tab')">Cryptography</h5>
+                    <h5 onclick="openLearnTab('forensics-tab')">Digital Forensics</h5>
+                </div>
+                <div class="browser">
+                    <h3>cyberlearn://modules/osint</h3>
+                </div>
+            </div>
+
+            <!-- OSINT Tab -->
+            <div class="content" id="osint-tab">
+                <div class="faq-header">
+                    <h1>OSINT Fundamentals</h1>
+                    <p>Learn Open Source Intelligence techniques to uncover digital footprints</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Introduction to OSINT
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>OSINT (Open Source Intelligence) involves collecting information from publicly available sources to identify threats, verify information, and track malicious activities.</p>
+                            <p>Key concepts include social media intelligence gathering, image and metadata analysis, domain and IP investigation, and persona identification.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> How would you verify the origin of a viral image claiming to show a current event?</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'Use reverse image search, check metadata, compare with known locations, and verify through multiple reliable sources.')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Social Media Intelligence
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Learn how to gather intelligence from social media platforms while respecting privacy and terms of service.</p>
+                            <p>Techniques include analyzing posting patterns, geolocation data, and network connections.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> What are three indicators that a social media account might be part of a bot network?</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'High posting frequency, lack of personal content, and coordinated messaging with similar accounts.')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cryptography Tab -->
+            <div class="content" id="crypto-tab" style="display: none;">
+                <div class="faq-header">
+                    <h1>Cryptography</h1>
+                    <p>Master encryption techniques to protect and verify digital information</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Encryption Fundamentals
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Learn how cryptographic techniques protect information and verify authenticity.</p>
+                            <p>Key concepts include symmetric vs asymmetric encryption, digital signatures, hash functions, and public key infrastructure.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> Decode this Base64 message: V2VsY29tZSB0byBDeWJlckxlYXJu</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'Welcome to CyberLearn')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Digital Signatures
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Understand how digital signatures work to verify the authenticity and integrity of digital messages or documents.</p>
+                            <p>Learn about public key cryptography and how it enables secure digital communication.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> What are the three properties that a digital signature must provide?</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'Authentication, integrity, and non-repudiation.')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forensics Tab -->
+            <div class="content" id="forensics-tab" style="display: none;">
+                <div class="faq-header">
+                    <h1>Digital Forensics</h1>
+                    <p>Learn to collect, preserve, and analyze digital evidence</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Evidence Collection
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Learn to collect, preserve, and analyze digital evidence from various sources.</p>
+                            <p>Key concepts include chain of custody procedures, file system analysis, network traffic examination, and timeline reconstruction.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> What are the first steps when encountering a compromised system?</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'Isolate the system, document everything, create forensic images, and preserve volatile data.')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Memory Forensics
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Learn techniques for analyzing volatile memory to uncover running processes, network connections, and malware artifacts.</p>
+                            <p>Memory analysis can reveal evidence that would be lost if a system is powered down.</p>
+
+                            <div class="question-container">
+                                <h4>Practice Exercise:</h4>
+                                <p><strong>Question:</strong> Why is memory forensics important in incident response?</p>
+                                <input type="text" class="answer-input" placeholder="Enter your answer here...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'It captures evidence of running processes and malware that would be lost after shutdown.')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cases Window -->
+        <div id="cases" class="window" style="width: 850px; height: 650px; top: 100px; left: 300px;">
+            <div class="windownav">
+                <h3>Cases - Real World Challenges</h3>
+                <div class="x" onclick="closeWindow('cases')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="browser">
+                    <h3>cyberlearn://cases/current</h3>
+                </div>
+            </div>
+            <div class="content">
+                <div class="case-container">
+                    <div class="faq-header">
+                        <h1>Case #77: The Propaganda Hunter</h1>
+                        <p>A message appears on your website's "Case Board" from a renowned Propaganda Hunter named Arthur Finch.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <h4>Case File: #77-ECHO // URGENT ASSISTANCE REQUIRED</h4>
+                        <div class="case-file">
+                            <p>"For months, I've been tracking 'Echo Corporation,' a shadowy firm that spreads disinformation. I've hit a wall. My informant inside is gone, but they left a digital dead drop: a corrupted data packet from Echo's early days.</p>
+                            <p>I need a fresh pair of eyes. Someone who can look at this without preconceptions. I've uploaded the files. Help me piece this together. I'll be checking in with questions. Follow the clues, and together we can expose them.</p>
+                            <p>· A. Finch"</p>
+                        </div>
+                    </div>
+
+                    <div class="case-section">
+                        <h4>The Core Mystery</h4>
+                        <p>You, the player, are assisting Hunter Finch. The "Echo Corporation" used sophisticated cryptographic techniques to hide their early propaganda plans. Your job is to decrypt their files and uncover the blueprint of their first major disinformation campaign.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Level 1: The Encrypted Directive
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>File Received:</strong> ENCRYPTED_DIRECTIVE.txt (Appears as gibberish)</p>
+                            <p><strong>Hunter's Question #1 (Audio Log):</strong> "Play the audio file briefing.wav. My informant said the key to deciphering the text is hidden in my own words. What is the passphrase I mention that seems out of place?"</p>
+
+                            <div class="question-container">
+                                <h4>Your Task:</h4>
+                                <p>Listen to the audio file and identify the passphrase.</p>
+                                <input type="text" class="answer-input" placeholder="Enter the passphrase...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'silent whispers')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Level 2: The Forged Document
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>File Unlocked:</strong> candidate_profile.jpg</p>
+                            <p><strong>Hunter's Question #2 (Text Message):</strong> "Good work. Now, analyze the image file. My tech expert says propaganda firms often hide clues in the data of the images themselves, not just what you see. Can you find the hidden message in the picture's metadata? What is the name of the original author?"</p>
+
+                            <div class="question-container">
+                                <h4>Your Task:</h4>
+                                <p>Examine the image metadata to find the author name.</p>
+                                <input type="text" class="answer-input" placeholder="Enter the author name...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'J. Smith')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Level 3: The Distribution List
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>File Unlocked:</strong> distribution_list.dat (A list of scrambled website URLs)</p>
+                            <p><strong>Hunter's Question #3 (Video Call Simulator):</strong> "This list is encoded. We believe Echo used a simple cipher based on the keyboard. Each letter is shifted to the one immediately to the left on a standard QWERTY keyboard. Can you decipher the first URL on the list? That will be their primary target."</p>
+
+                            <div class="question-container">
+                                <h4>Your Task:</h4>
+                                <p>Decode the first URL: Rppm://kvsb.ibs/echo_target</p>
+                                <input type="text" class="answer-input" placeholder="Enter the decoded URL...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'http://news.com/echo_target')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Level 4: The Blueprint - Connecting the Dots
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>File Unlocked:</strong> final_puzzle.zip (Password Protected)</p>
+                            <p><strong>Hunter's Final Question:</strong> "This is it. The master plan. The password is a combination of the clues you've found. Use the passphrase from my briefing, the author's alias, and the target website. Combine them into a single key. What is the password?"</p>
+
+                            <div class="question-container">
+                                <h4>Your Task:</h4>
+                                <p>Combine the clues to create the password.</p>
+                                <input type="text" class="answer-input" placeholder="Enter the password...">
+                                <button class="submit-btn" onclick="checkAnswer(this, 'silentwhispers_jsmith_newscom')">Submit Answer</button>
+                                <div class="feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-menu" onclick="toggleStartMenu()">
+            START
+            <div class="start-menu-content" id="startMenu">
+                <h4>Official Social Media</h4>
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="clock" id="clock">00:00:00</div>
+    </div>
+
+  
+</body>
+</html>
