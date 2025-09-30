@@ -286,6 +286,12 @@
             color: #000;
         }
 
+        .desktop-tabs h5.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(255, 0, 0, 0.1);
+        }
+
         /* Mobile Tabs - Side by Side */
         .mobile-tabs {
             display: flex;
@@ -317,6 +323,12 @@
         .mobile-tabs h5.active {
             background: var(--neon-green);
             color: #000;
+        }
+
+        .mobile-tabs h5.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(255, 0, 0, 0.1);
         }
 
         .browser {
@@ -548,6 +560,194 @@
             background: #2ae000;
         }
 
+        .submit-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        /* Case Styles */
+        .case-container {
+            margin: 20px 0;
+        }
+
+        .case-intro {
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .case-step {
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .case-choice {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .case-choice:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .case-choice.selected {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: #fff;
+        }
+
+        .case-outcome {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .case-outcome.game-over {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #f00;
+            color: #f00;
+        }
+
+        .case-outcome.safe {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #0f0;
+            color: #0f0;
+        }
+
+        .case-outcome.hero {
+            background: rgba(0, 100, 255, 0.2);
+            border: 1px solid #00f;
+            color: #00f;
+        }
+
+        .case-ending {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .congratulations {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Case #2 Styles */
+        .hunter-message {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .tool-container {
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tool-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--neon-green);
+            font-size: 18px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .success-message {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .level-complete {
+            background: rgba(57, 255, 20, 0.2);
+            border: 1px solid var(--neon-green);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .tab-container {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            border: 1px solid var(--neon-green);
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .tab.active {
+            background: var(--neon-green);
+            color: #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .locked-message {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #f00;
+            color: #f00;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
         /* Cyberpunk scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -753,22 +953,22 @@
                     <p>👉 <strong>Example:</strong> A fake account may post a photo with location metadata still attached. OSINT tools can reveal where and when the photo was actually taken.</p>
                 </section>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="osint-quiz1">
                     <div class="quiz-question">OSINT relies mainly on:</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) Private hacking tools</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) Publicly available data</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) Secret government databases</div>
-                    <button class="submit-btn" onclick="checkAnswer('osint1', 'b')">Check Answer</button>
-                    <div class="quiz-feedback" id="osint1-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1')">a) Private hacking tools</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1')">b) Publicly available data</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1')">c) Secret government databases</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('osint-quiz1', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="osint-quiz1-feedback"></div>
                 </div>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="osint-quiz2">
                     <div class="quiz-question">GEOINT is a branch of OSINT that focuses on:</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) Encryption</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) Location and mapping data</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) Social media bots</div>
-                    <button class="submit-btn" onclick="checkAnswer('osint2', 'b')">Check Answer</button>
-                    <div class="quiz-feedback" id="osint2-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2')">a) Encryption</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2')">b) Location and mapping data</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2')">c) Social media bots</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('osint-quiz2', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="osint-quiz2-feedback"></div>
                 </div>
             </div>
 
@@ -784,22 +984,22 @@
                     <p>👉 <strong>Example:</strong> A propaganda group might encrypt their instructions so only insiders with the passphrase can read them. Investigators must break the code to reveal the plan.</p>
                 </section>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="crypto-quiz1">
                     <div class="quiz-question">Which type of cryptography uses a pair of keys (public & private)?</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) Symmetric cryptography</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) Asymmetric cryptography</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) Hash functions</div>
-                    <button class="submit-btn" onclick="checkAnswer('crypto1', 'b')">Check Answer</button>
-                    <div class="quiz-feedback" id="crypto1-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1')">a) Symmetric cryptography</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1')">b) Asymmetric cryptography</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1')">c) Hash functions</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('crypto-quiz1', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="crypto-quiz1-feedback"></div>
                 </div>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="crypto-quiz2">
                     <div class="quiz-question">Cryptography ensures that:</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) Only authorized people can read the message</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) Messages are spread faster</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) Files cannot be deleted</div>
-                    <button class="submit-btn" onclick="checkAnswer('crypto2', 'a')">Check Answer</button>
-                    <div class="quiz-feedback" id="crypto2-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2')">a) Only authorized people can read the message</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2')">b) Messages are spread faster</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2')">c) Files cannot be deleted</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('crypto-quiz2', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="crypto-quiz2-feedback"></div>
                 </div>
             </div>
 
@@ -815,22 +1015,22 @@
                     <p>👉 <strong>Example:</strong> A fake news image may look normal, but its metadata shows it was created with editing software days before the "breaking event" it claims to depict.</p>
                 </section>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="forensics-quiz1">
                     <div class="quiz-question">Which of these can digital forensics uncover?</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) Deleted chat logs</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) Secret PINs of bank accounts</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) Handwritten notes</div>
-                    <button class="submit-btn" onclick="checkAnswer('forensics1', 'a')">Check Answer</button>
-                    <div class="quiz-feedback" id="forensics1-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1')">a) Deleted chat logs</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1')">b) Secret PINs of bank accounts</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1')">c) Handwritten notes</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('forensics-quiz1', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="forensics-quiz1-feedback"></div>
                 </div>
 
-                <div class="quiz-container">
+                <div class="quiz-container" id="forensics-quiz2">
                     <div class="quiz-question">Why is forensics important in cybercrime?</div>
-                    <div class="quiz-option" onclick="selectOption(this)">a) It helps investigators trace and preserve digital evidence</div>
-                    <div class="quiz-option" onclick="selectOption(this)">b) It allows hackers to erase their tracks completely</div>
-                    <div class="quiz-option" onclick="selectOption(this)">c) It spreads fake news faster</div>
-                    <button class="submit-btn" onclick="checkAnswer('forensics2', 'a')">Check Answer</button>
-                    <div class="quiz-feedback" id="forensics2-feedback"></div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2')">a) It helps investigators trace and preserve digital evidence</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2')">b) It allows hackers to erase their tracks completely</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2')">c) It spreads fake news faster</div>
+                    <button class="submit-btn" onclick="checkQuizAnswer('forensics-quiz2', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="forensics-quiz2-feedback"></div>
                 </div>
             </div>
         </div>
@@ -841,15 +1041,284 @@
                 <div class="x" onclick="closeWindow('cases-desktop')">✕</div>
             </div>
             <div class="web-bar">
+                <div class="desktop-tabs">
+                    <h5 class="active" onclick="openDesktopCaseTab('case1-tab-desktop')">Case #1</h5>
+                    <h5 id="case2-tab-header" onclick="openDesktopCaseTab('case2-tab-desktop')">Case #2</h5>
+                </div>
                 <div class="browser">
                     <h3>cyberlearn://cases/current</h3>
                 </div>
             </div>
-            <div class="content">
+            <div class="content" id="case1-tab-desktop">
                 <div class="case-container">
                     <div class="faq-header">
-                        <h1>Case #77: The Propaganda Hunter</h1>
-                        <p>A message appears on your website's "Case Board" from a renowned Propaganda Hunter named Arthur Finch.</p>
+                        <h1>🎮 Case 1: "The Suspicious Giveaway"</h1>
+                        <p>A phishing simulation to test your cybersecurity awareness</p>
+                    </div>
+
+                    <div class="case-intro">
+                        <h4>Intro Scene</h4>
+                        <p>It's late at night. You're scrolling on your phone, tired from the day. Suddenly, an ad explodes on your screen with fireworks and bright text:</p>
+                        <p><strong>✨ "Congratulations! You're the lucky winner of an iPhone 15. Click to claim your prize!" ✨</strong></p>
+                        <p>Your heart races. The page looks sleek, professional — Apple's logo at the top, a countdown timer ticking: "10 minutes left to claim."</p>
+                        <p>The adrenaline kicks in. But something… doesn't feel right.</p>
+                    </div>
+
+                    <div class="case-step" id="case1-step1">
+                        <h4>Interactive Step 1 (First Choice)</h4>
+                        <p>You notice three things on the page:</p>
+                        <ol>
+                            <li>A form asking for your full name, email, and password.</li>
+                            <li>A shiny green button: "Claim Now."</li>
+                            <li>The URL bar: http://app1e-pr1ze.com</li>
+                        </ol>
+                        <p><strong>👉 What do you do?</strong></p>
+                        
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1')">(A) Fill in the form quickly. Time is running out!</div>
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1')">(B) Inspect the URL more carefully.</div>
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1')">(C) Take a screenshot and search online about the site.</div>
+                        
+                        <div class="case-outcome game-over" id="case1-step1-a">
+                            <h5>Outcome A:</h5>
+                            <p>The screen flashes "Thank you!" but moments later, you get logged out of your email. Notifications explode: your account is compromised. <strong>Game Over — Phished.</strong></p>
+                        </div>
+                        
+                        <div class="case-outcome safe" id="case1-step1-b">
+                            <h5>Outcome B:</h5>
+                            <p>You realize "apple" is spelled with a 1 and not an "l." Suspicious! You avoided the trap. The timer keeps ticking… but you stay safe.</p>
+                        </div>
+                        
+                        <div class="case-outcome safe" id="case1-step1-c">
+                            <h5>Outcome C:</h5>
+                            <p>A quick search shows reports from other users: "This is a SCAM." You outsmart the attack.</p>
+                        </div>
+                        
+                        <button class="submit-btn" onclick="checkCaseAnswer('case1-step1')">Submit Choice</button>
+                    </div>
+
+                    <div class="case-step" id="case1-step2">
+                        <h4>Interactive Step 2 (Puzzle)</h4>
+                        <p>But the game isn't over. Suddenly, a second email arrives in your inbox:</p>
+                        <p><strong>"To confirm your prize, send us the last 4 digits of your credit card."</strong></p>
+                        <p>Now you must decide:</p>
+                        
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2')">(A) Reply with the digits — they can't do much with just 4 numbers, right?</div>
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2')">(B) Hover over the sender's address: support@apple-prize.net.</div>
+                        <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2')">(C) Forward the email to your university's cybersecurity club for analysis.</div>
+                        
+                        <div class="case-outcome game-over" id="case1-step2-a">
+                            <h5>Outcome A:</h5>
+                            <p>The attackers use it with leaked data from other breaches. They're piecing your digital puzzle together. You fall deeper. <strong>Game Over.</strong></p>
+                        </div>
+                        
+                        <div class="case-outcome safe" id="case1-step2-b">
+                            <h5>Outcome B:</h5>
+                            <p>You see the domain is wrong. Apple never uses ".net." Suspicious confirmed. You delete it. Safe.</p>
+                        </div>
+                        
+                        <div class="case-outcome hero" id="case1-step2-c">
+                            <h5>Outcome C:</h5>
+                            <p>The club responds: "Classic phishing scam. Good catch!" You win bonus points.</p>
+                        </div>
+                        
+                        <button class="submit-btn" onclick="checkCaseAnswer('case1-step2')">Submit Choice</button>
+                    </div>
+
+                    <div class="case-ending" id="case1-ending">
+                        <div class="congratulations">🎉 Congratulations!</div>
+                        <p>You navigated the dark waters of a phishing attack.</p>
+                        <p>This wasn't just a game — this is how real OSINT-based social engineering works. Hackers use urgency, fake domains, and psychology to trick you.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content" id="case2-tab-desktop" style="display: none;">
+                <div class="case-container">
+                    <div class="faq-header">
+                        <h1>🕵️ Case #2: The Propaganda Hunter</h1>
+                        <p>Decrypt Echo Corporation's propaganda blueprint</p>
+                    </div>
+
+                    <div class="hunter-message">
+                        > MESSAGE FROM HUNTER FINCH<br><br>
+                        For months, I've been tracking 'Echo Corporation,' a shadowy firm that spreads disinformation. I've hit a wall. My informant inside is gone, but they left a digital dead drop: a corrupted data packet from Echo's early days.<br><br>
+                        I need a fresh pair of eyes. Someone who can look at this without preconceptions. I've uploaded the files. Help me piece this together. I'll be checking in with questions. Follow the clues, and together we can expose them.<br><br>
+                        · A. Finch
+                    </div>
+
+                    <!-- Case 2 Tabs -->
+                    <div class="tab-container">
+                        <div class="tab active" data-tab="readme">Read Me</div>
+                        <div class="tab locked" data-tab="forged" id="forged-tab-header">Forged Document</div>
+                        <div class="tab locked" data-tab="distribution" id="distribution-tab-header">Distribution List</div>
+                        <div class="tab locked" data-tab="blueprint" id="blueprint-tab-header">Blueprint</div>
+                    </div>
+
+                    <!-- Read Me Tab -->
+                    <div class="tab-content active" id="readme-tab">
+                        <div class="tool-container">
+                            <div class="tool-title">Encrypted Directive Analysis</div>
+                            <p>Initializing propaganda detection protocol...</p>
+                            
+                            <div class="hunter-message">
+                                > Hunter Finch: "Play the audio file briefing.wav. My informant said the key to deciphering the text is hidden in my own words. What is the passphrase I mention that seems out of place?"
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Audio Analyzer</div>
+                                <audio class="audio-player" controls>
+                                    <source src="briefing.wav" type="audio/wav">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                <p>> Transcript: "The situation is critical. We must be like <strong>silent whispers</strong> in the wind, unseen but heard. The truth is our only weapon."</p>
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Encrypted Text</div>
+                                <textarea class="input-field" rows="4" readonly>Xlmw irgvctxih ewi xli asvphw sj xli qerxsvw mw xli higvctxih xs xli wlmw.</textarea>
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Decoder Tool</div>
+                                <p>> Enter the passphrase to decrypt the message:</p>
+                                <input type="text" class="input-field" id="passphrase-input" placeholder="Enter passphrase...">
+                                <button class="submit-btn" onclick="checkCase2Answer('level1')">> DECRYPT MESSAGE</button>
+                                <div id="decrypted-text" class="success-message"></div>
+                            </div>
+                            
+                            <div id="level-1-complete" class="level-complete">
+                                > LEVEL 1 COMPLETE! Forged Document tab is now unlocked.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forged Document Tab -->
+                    <div class="tab-content" id="forged-tab">
+                        <div class="tool-container">
+                            <div class="tool-title">Forged Document Analysis</div>
+                            
+                            <div class="hunter-message">
+                                > Hunter Finch: "Good work. Now, analyze the image file. My tech expert says propaganda firms often hide clues in the data of the images themselves, not just what you see. Can you find the hidden message in the picture's metadata? What is the name of the original author?"
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tab-container">
+                                    <div class="tab active" data-tab="visual">Visual Inspection</div>
+                                    <div class="tab" data-tab="data" id="data-tab-header">Data Inspection</div>
+                                </div>
+                                
+                                <div class="tab-content active" id="visual-tab">
+                                    <div class="tool-title">Candidate Profile Image</div>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <div style="width: 200px; height: 200px; background: #333; border: 2px solid #39ff14; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                                            [Image Placeholder]
+                                        </div>
+                                        <p>> Official Credit: John Doe Photography</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="data-tab">
+                                    <div class="tool-title">Image Metadata</div>
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">File Name</td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">candidate_profile.jpg</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Size</td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">2.4 MB</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Dimensions</td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">1200x800</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14; background: rgba(0,30,0,0.5);"><strong>Author</strong></td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14; background: rgba(0,30,0,0.5);"><strong>J. Smith</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Software</td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Photoshop v12.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Comment</td>
+                                            <td style="padding: 5px; border: 1px solid #39ff14;">Echo Corp - For internal use only</td>
+                                        </tr>
+                                    </table>
+                                    <div class="success-message" style="margin-top: 10px;">
+                                        > Data inspection complete. The original author is J. Smith, not John Doe as credited.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Answer Verification</div>
+                                <p>> Enter the name of the original author:</p>
+                                <input type="text" class="input-field" id="author-input" placeholder="Enter author name...">
+                                <button class="submit-btn" onclick="checkCase2Answer('level2')">> VERIFY ANSWER</button>
+                                <div id="author-result" class="success-message"></div>
+                            </div>
+                            
+                            <div id="level-2-complete" class="level-complete">
+                                > LEVEL 2 COMPLETE! Distribution List tab is now unlocked.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Distribution List Tab -->
+                    <div class="tab-content" id="distribution-tab">
+                        <div class="tool-container">
+                            <div class="tool-title">Distribution List Analysis</div>
+                            
+                            <div class="hunter-message">
+                                > Hunter Finch: "Excellent. Now we're getting somewhere. The next file contains an encrypted URL. They used a simple substitution cipher. Can you decode the pattern and find their target website?"
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Encrypted URL</div>
+                                <textarea class="input-field" rows="2" readonly>jvvr://pgyu.eqo/gejq_vctigv</textarea>
+                                <p>> Hint: Use the Caesar Cipher tool with shift value 2</p>
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Answer Verification</div>
+                                <p>> Enter the decoded URL:</p>
+                                <input type="text" class="input-field" id="url-input" placeholder="Enter decoded URL...">
+                                <button class="submit-btn" onclick="checkCase2Answer('level3')">> VERIFY ANSWER</button>
+                                <div id="url-result" class="success-message"></div>
+                            </div>
+                            
+                            <div id="level-3-complete" class="level-complete">
+                                > LEVEL 3 COMPLETE! Blueprint tab is now unlocked.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blueprint Tab -->
+                    <div class="tab-content" id="blueprint-tab">
+                        <div class="tool-container">
+                            <div class="tool-title">Blueprint Analysis</div>
+                            
+                            <div class="hunter-message">
+                                > Hunter Finch: "We're almost there. This is the final piece - their propaganda blueprint. It's heavily encrypted, but with what we've learned, we can crack it. Use all the tools and information you've gathered to decrypt their master plan."
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Encrypted Blueprint</div>
+                                <textarea class="input-field" rows="8" readonly>Gur Ehpb Pbecfr'f zvffvba vf gb qrfgebl gur serr jro. Jr jvyy hfr qvfgenpgvba naq qvfurfvba gb pbageby gur zffntr. Bhe svefg chmmyr: "Gur jbeyq vf va qnexarff, naq bayl jr pna cnff gur yvtug."</textarea>
+                            </div>
+                            
+                            <div class="tool-container">
+                                <div class="tool-title">Final Decryption</div>
+                                <p>> Use all the tools and knowledge you've gained to decrypt this final message.</p>
+                                <p>> Hint: Combine what you've learned about ciphers and propaganda techniques.</p>
+                                <button class="submit-btn" onclick="checkCase2Answer('level4')">> DECRYPT BLUEPRINT</button>
+                                <div id="blueprint-result" class="success-message"></div>
+                            </div>
+                            
+                            <div id="level-4-complete" class="level-complete">
+                                > CONGRATULATIONS! You've exposed Echo Corporation's propaganda blueprint. The world is safer thanks to your work.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -942,22 +1411,22 @@
                 <p>👉 <strong>Example:</strong> A fake account may post a photo with location metadata still attached. OSINT tools can reveal where and when the photo was actually taken.</p>
             </section>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="osint-quiz1-mobile">
                 <div class="quiz-question">OSINT relies mainly on:</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) Private hacking tools</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) Publicly available data</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) Secret government databases</div>
-                <button class="submit-btn" onclick="checkAnswer('osint1-mobile', 'b')">Check Answer</button>
-                <div class="quiz-feedback" id="osint1-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1-mobile')">a) Private hacking tools</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1-mobile')">b) Publicly available data</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz1-mobile')">c) Secret government databases</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('osint-quiz1-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="osint-quiz1-mobile-feedback"></div>
             </div>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="osint-quiz2-mobile">
                 <div class="quiz-question">GEOINT is a branch of OSINT that focuses on:</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) Encryption</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) Location and mapping data</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) Social media bots</div>
-                <button class="submit-btn" onclick="checkAnswer('osint2-mobile', 'b')">Check Answer</button>
-                <div class="quiz-feedback" id="osint2-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2-mobile')">a) Encryption</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2-mobile')">b) Location and mapping data</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'osint-quiz2-mobile')">c) Social media bots</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('osint-quiz2-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="osint-quiz2-mobile-feedback"></div>
             </div>
         </div>
 
@@ -973,22 +1442,22 @@
                 <p>👉 <strong>Example:</strong> A propaganda group might encrypt their instructions so only insiders with the passphrase can read them. Investigators must break the code to reveal the plan.</p>
             </section>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="crypto-quiz1-mobile">
                 <div class="quiz-question">Which type of cryptography uses a pair of keys (public & private)?</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) Symmetric cryptography</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) Asymmetric cryptography</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) Hash functions</div>
-                <button class="submit-btn" onclick="checkAnswer('crypto1-mobile', 'b')">Check Answer</button>
-                <div class="quiz-feedback" id="crypto1-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1-mobile')">a) Symmetric cryptography</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1-mobile')">b) Asymmetric cryptography</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz1-mobile')">c) Hash functions</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('crypto-quiz1-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="crypto-quiz1-mobile-feedback"></div>
             </div>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="crypto-quiz2-mobile">
                 <div class="quiz-question">Cryptography ensures that:</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) Only authorized people can read the message</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) Messages are spread faster</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) Files cannot be deleted</div>
-                <button class="submit-btn" onclick="checkAnswer('crypto2-mobile', 'a')">Check Answer</button>
-                <div class="quiz-feedback" id="crypto2-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2-mobile')">a) Only authorized people can read the message</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2-mobile')">b) Messages are spread faster</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'crypto-quiz2-mobile')">c) Files cannot be deleted</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('crypto-quiz2-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="crypto-quiz2-mobile-feedback"></div>
             </div>
         </div>
 
@@ -1004,22 +1473,22 @@
                 <p>👉 <strong>Example:</strong> A fake news image may look normal, but its metadata shows it was created with editing software days before the "breaking event" it claims to depict.</p>
             </section>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="forensics-quiz1-mobile">
                 <div class="quiz-question">Which of these can digital forensics uncover?</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) Deleted chat logs</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) Secret PINs of bank accounts</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) Handwritten notes</div>
-                <button class="submit-btn" onclick="checkAnswer('forensics1-mobile', 'a')">Check Answer</button>
-                <div class="quiz-feedback" id="forensics1-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1-mobile')">a) Deleted chat logs</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1-mobile')">b) Secret PINs of bank accounts</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz1-mobile')">c) Handwritten notes</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('forensics-quiz1-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="forensics-quiz1-mobile-feedback"></div>
             </div>
 
-            <div class="quiz-container">
+            <div class="quiz-container" id="forensics-quiz2-mobile">
                 <div class="quiz-question">Why is forensics important in cybercrime?</div>
-                <div class="quiz-option" onclick="selectOption(this)">a) It helps investigators trace and preserve digital evidence</div>
-                <div class="quiz-option" onclick="selectOption(this)">b) It allows hackers to erase their tracks completely</div>
-                <div class="quiz-option" onclick="selectOption(this)">c) It spreads fake news faster</div>
-                <button class="submit-btn" onclick="checkAnswer('forensics2-mobile', 'a')">Check Answer</button>
-                <div class="quiz-feedback" id="forensics2-mobile-feedback"></div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2-mobile')">a) It helps investigators trace and preserve digital evidence</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2-mobile')">b) It allows hackers to erase their tracks completely</div>
+                <div class="quiz-option" onclick="selectQuizOption(this, 'forensics-quiz2-mobile')">c) It spreads fake news faster</div>
+                <button class="submit-btn" onclick="checkQuizAnswer('forensics-quiz2-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="forensics-quiz2-mobile-feedback"></div>
             </div>
         </div>
     </div>
@@ -1030,15 +1499,284 @@
             <div class="x" onclick="closeMobileWindow('cases-mobile')">✕</div>
         </div>
         <div class="web-bar">
+            <div class="mobile-tabs">
+                <h5 class="active" onclick="openMobileCaseTab('case1-tab-mobile')">Case #1</h5>
+                <h5 id="case2-tab-header-mobile" onclick="openMobileCaseTab('case2-tab-mobile')">Case #2</h5>
+            </div>
             <div class="browser">
                 <h3>cyberlearn://cases/current</h3>
             </div>
         </div>
-        <div class="content">
+        <div class="content" id="case1-tab-mobile">
             <div class="case-container">
                 <div class="faq-header">
-                    <h1>Case #77: The Propaganda Hunter</h1>
-                    <p>A message appears on your website's "Case Board" from a renowned Propaganda Hunter named Arthur Finch.</p>
+                    <h1>🎮 Case 1: "The Suspicious Giveaway"</h1>
+                    <p>A phishing simulation to test your cybersecurity awareness</p>
+                </div>
+
+                <div class="case-intro">
+                    <h4>Intro Scene</h4>
+                    <p>It's late at night. You're scrolling on your phone, tired from the day. Suddenly, an ad explodes on your screen with fireworks and bright text:</p>
+                    <p><strong>✨ "Congratulations! You're the lucky winner of an iPhone 15. Click to claim your prize!" ✨</strong></p>
+                    <p>Your heart races. The page looks sleek, professional — Apple's logo at the top, a countdown timer ticking: "10 minutes left to claim."</p>
+                    <p>The adrenaline kicks in. But something… doesn't feel right.</p>
+                </div>
+
+                <div class="case-step" id="case1-step1-mobile">
+                    <h4>Interactive Step 1 (First Choice)</h4>
+                    <p>You notice three things on the page:</p>
+                    <ol>
+                        <li>A form asking for your full name, email, and password.</li>
+                        <li>A shiny green button: "Claim Now."</li>
+                        <li>The URL bar: http://app1e-pr1ze.com</li>
+                    </ol>
+                    <p><strong>👉 What do you do?</strong></p>
+                    
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1-mobile')">(A) Fill in the form quickly. Time is running out!</div>
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1-mobile')">(B) Inspect the URL more carefully.</div>
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step1-mobile')">(C) Take a screenshot and search online about the site.</div>
+                    
+                    <div class="case-outcome game-over" id="case1-step1-a-mobile">
+                        <h5>Outcome A:</h5>
+                        <p>The screen flashes "Thank you!" but moments later, you get logged out of your email. Notifications explode: your account is compromised. <strong>Game Over — Phished.</strong></p>
+                    </div>
+                    
+                    <div class="case-outcome safe" id="case1-step1-b-mobile">
+                        <h5>Outcome B:</h5>
+                        <p>You realize "apple" is spelled with a 1 and not an "l." Suspicious! You avoided the trap. The timer keeps ticking… but you stay safe.</p>
+                    </div>
+                    
+                    <div class="case-outcome safe" id="case1-step1-c-mobile">
+                        <h5>Outcome C:</h5>
+                        <p>A quick search shows reports from other users: "This is a SCAM." You outsmart the attack.</p>
+                    </div>
+                    
+                    <button class="submit-btn" onclick="checkCaseAnswer('case1-step1-mobile')">Submit Choice</button>
+                </div>
+
+                <div class="case-step" id="case1-step2-mobile">
+                    <h4>Interactive Step 2 (Puzzle)</h4>
+                    <p>But the game isn't over. Suddenly, a second email arrives in your inbox:</p>
+                    <p><strong>"To confirm your prize, send us the last 4 digits of your credit card."</strong></p>
+                    <p>Now you must decide:</p>
+                    
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2-mobile')">(A) Reply with the digits — they can't do much with just 4 numbers, right?</div>
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2-mobile')">(B) Hover over the sender's address: support@apple-prize.net.</div>
+                    <div class="case-choice" onclick="selectCaseChoice(this, 'case1-step2-mobile')">(C) Forward the email to your university's cybersecurity club for analysis.</div>
+                    
+                    <div class="case-outcome game-over" id="case1-step2-a-mobile">
+                        <h5>Outcome A:</h5>
+                        <p>The attackers use it with leaked data from other breaches. They're piecing your digital puzzle together. You fall deeper. <strong>Game Over.</strong></p>
+                    </div>
+                    
+                    <div class="case-outcome safe" id="case1-step2-b-mobile">
+                        <h5>Outcome B:</h5>
+                        <p>You see the domain is wrong. Apple never uses ".net." Suspicious confirmed. You delete it. Safe.</p>
+                    </div>
+                    
+                    <div class="case-outcome hero" id="case1-step2-c-mobile">
+                        <h5>Outcome C:</h5>
+                        <p>The club responds: "Classic phishing scam. Good catch!" You win bonus points.</p>
+                    </div>
+                    
+                    <button class="submit-btn" onclick="checkCaseAnswer('case1-step2-mobile')">Submit Choice</button>
+                </div>
+
+                <div class="case-ending" id="case1-ending-mobile">
+                    <div class="congratulations">🎉 Congratulations!</div>
+                    <p>You navigated the dark waters of a phishing attack.</p>
+                    <p>This wasn't just a game — this is how real OSINT-based social engineering works. Hackers use urgency, fake domains, and psychology to trick you.</p>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="case2-tab-mobile" style="display: none;">
+            <div class="case-container">
+                <div class="faq-header">
+                    <h1>🕵️ Case #2: The Propaganda Hunter</h1>
+                    <p>Decrypt Echo Corporation's propaganda blueprint</p>
+                </div>
+
+                <div class="hunter-message">
+                    > MESSAGE FROM HUNTER FINCH<br><br>
+                    For months, I've been tracking 'Echo Corporation,' a shadowy firm that spreads disinformation. I've hit a wall. My informant inside is gone, but they left a digital dead drop: a corrupted data packet from Echo's early days.<br><br>
+                    I need a fresh pair of eyes. Someone who can look at this without preconceptions. I've uploaded the files. Help me piece this together. I'll be checking in with questions. Follow the clues, and together we can expose them.<br><br>
+                    · A. Finch
+                </div>
+
+                <!-- Case 2 Tabs -->
+                <div class="tab-container">
+                    <div class="tab active" data-tab="readme-mobile">Read Me</div>
+                    <div class="tab locked" data-tab="forged-mobile" id="forged-tab-header-mobile">Forged Document</div>
+                    <div class="tab locked" data-tab="distribution-mobile" id="distribution-tab-header-mobile">Distribution List</div>
+                    <div class="tab locked" data-tab="blueprint-mobile" id="blueprint-tab-header-mobile">Blueprint</div>
+                </div>
+
+                <!-- Read Me Tab -->
+                <div class="tab-content active" id="readme-tab-mobile">
+                    <div class="tool-container">
+                        <div class="tool-title">Encrypted Directive Analysis</div>
+                        <p>Initializing propaganda detection protocol...</p>
+                        
+                        <div class="hunter-message">
+                            > Hunter Finch: "Play the audio file briefing.wav. My informant said the key to deciphering the text is hidden in my own words. What is the passphrase I mention that seems out of place?"
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Audio Analyzer</div>
+                            <audio class="audio-player" controls>
+                                <source src="briefing.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p>> Transcript: "The situation is critical. We must be like <strong>silent whispers</strong> in the wind, unseen but heard. The truth is our only weapon."</p>
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Encrypted Text</div>
+                            <textarea class="input-field" rows="4" readonly>Xlmw irgvctxih ewi xli asvphw sj xli qerxsvw mw xli higvctxih xs xli wlmw.</textarea>
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Decoder Tool</div>
+                            <p>> Enter the passphrase to decrypt the message:</p>
+                            <input type="text" class="input-field" id="passphrase-input-mobile" placeholder="Enter passphrase...">
+                            <button class="submit-btn" onclick="checkCase2Answer('level1-mobile')">> DECRYPT MESSAGE</button>
+                            <div id="decrypted-text-mobile" class="success-message"></div>
+                        </div>
+                        
+                        <div id="level-1-complete-mobile" class="level-complete">
+                            > LEVEL 1 COMPLETE! Forged Document tab is now unlocked.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forged Document Tab -->
+                <div class="tab-content" id="forged-tab-mobile">
+                    <div class="tool-container">
+                        <div class="tool-title">Forged Document Analysis</div>
+                        
+                        <div class="hunter-message">
+                            > Hunter Finch: "Good work. Now, analyze the image file. My tech expert says propaganda firms often hide clues in the data of the images themselves, not just what you see. Can you find the hidden message in the picture's metadata? What is the name of the original author?"
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tab-container">
+                                <div class="tab active" data-tab="visual-mobile">Visual Inspection</div>
+                                <div class="tab" data-tab="data-mobile" id="data-tab-header-mobile">Data Inspection</div>
+                            </div>
+                            
+                            <div class="tab-content active" id="visual-tab-mobile">
+                                <div class="tool-title">Candidate Profile Image</div>
+                                <div style="text-align: center; margin: 15px 0;">
+                                    <div style="width: 200px; height: 200px; background: #333; border: 2px solid #39ff14; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                                        [Image Placeholder]
+                                    </div>
+                                    <p>> Official Credit: John Doe Photography</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="data-tab-mobile">
+                                <div class="tool-title">Image Metadata</div>
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">File Name</td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">candidate_profile.jpg</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Size</td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">2.4 MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Dimensions</td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">1200x800</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14; background: rgba(0,30,0,0.5);"><strong>Author</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14; background: rgba(0,30,0,0.5);"><strong>J. Smith</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Software</td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Photoshop v12.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Comment</td>
+                                        <td style="padding: 5px; border: 1px solid #39ff14;">Echo Corp - For internal use only</td>
+                                    </tr>
+                                </table>
+                                <div class="success-message" style="margin-top: 10px;">
+                                    > Data inspection complete. The original author is J. Smith, not John Doe as credited.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Answer Verification</div>
+                            <p>> Enter the name of the original author:</p>
+                            <input type="text" class="input-field" id="author-input-mobile" placeholder="Enter author name...">
+                            <button class="submit-btn" onclick="checkCase2Answer('level2-mobile')">> VERIFY ANSWER</button>
+                            <div id="author-result-mobile" class="success-message"></div>
+                        </div>
+                        
+                        <div id="level-2-complete-mobile" class="level-complete">
+                            > LEVEL 2 COMPLETE! Distribution List tab is now unlocked.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distribution List Tab -->
+                <div class="tab-content" id="distribution-tab-mobile">
+                    <div class="tool-container">
+                        <div class="tool-title">Distribution List Analysis</div>
+                        
+                        <div class="hunter-message">
+                            > Hunter Finch: "Excellent. Now we're getting somewhere. The next file contains an encrypted URL. They used a simple substitution cipher. Can you decode the pattern and find their target website?"
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Encrypted URL</div>
+                            <textarea class="input-field" rows="2" readonly>jvvr://pgyu.eqo/gejq_vctigv</textarea>
+                            <p>> Hint: Use the Caesar Cipher tool with shift value 2</p>
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Answer Verification</div>
+                            <p>> Enter the decoded URL:</p>
+                            <input type="text" class="input-field" id="url-input-mobile" placeholder="Enter decoded URL...">
+                            <button class="submit-btn" onclick="checkCase2Answer('level3-mobile')">> VERIFY ANSWER</button>
+                            <div id="url-result-mobile" class="success-message"></div>
+                        </div>
+                        
+                        <div id="level-3-complete-mobile" class="level-complete">
+                            > LEVEL 3 COMPLETE! Blueprint tab is now unlocked.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blueprint Tab -->
+                <div class="tab-content" id="blueprint-tab-mobile">
+                    <div class="tool-container">
+                        <div class="tool-title">Blueprint Analysis</div>
+                        
+                        <div class="hunter-message">
+                            > Hunter Finch: "We're almost there. This is the final piece - their propaganda blueprint. It's heavily encrypted, but with what we've learned, we can crack it. Use all the tools and information you've gathered to decrypt their master plan."
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Encrypted Blueprint</div>
+                            <textarea class="input-field" rows="8" readonly>Gur Ehpb Pbecfr'f zvffvba vf gb qrfgebl gur serr jro. Jr jvyy hfr qvfgenpgvba naq qvfurfvba gb pbageby gur zffntr. Bhe svefg chmmyr: "Gur jbeyq vf va qnexarff, naq bayl jr pna cnff gur yvtug."</textarea>
+                        </div>
+                        
+                        <div class="tool-container">
+                            <div class="tool-title">Final Decryption</div>
+                            <p>> Use all the tools and knowledge you've gained to decrypt this final message.</p>
+                            <p>> Hint: Combine what you've learned about ciphers and propaganda techniques.</p>
+                            <button class="submit-btn" onclick="checkCase2Answer('level4-mobile')">> DECRYPT BLUEPRINT</button>
+                            <div id="blueprint-result-mobile" class="success-message"></div>
+                        </div>
+                        
+                        <div id="level-4-complete-mobile" class="level-complete">
+                            > CONGRATULATIONS! You've exposed Echo Corporation's propaganda blueprint. The world is safer thanks to your work.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1065,6 +1803,26 @@
             'system-desktop': { width: 800, height: 600 },
             'learn-desktop': { width: 900, height: 700 },
             'cases-desktop': { width: 850, height: 650 }
+        };
+
+        // Track completed steps for Case #1
+        const completedSteps = {
+            'case1-step1': false,
+            'case1-step2': false,
+            'case1-step1-mobile': false,
+            'case1-step2-mobile': false
+        };
+
+        // Track completed levels for Case #2
+        const case2Progress = {
+            level1: false,
+            level2: false,
+            level3: false,
+            level4: false,
+            level1Mobile: false,
+            level2Mobile: false,
+            level3Mobile: false,
+            level4Mobile: false
         };
 
         // Mobile-specific functions
@@ -1105,6 +1863,17 @@
             });
             document.getElementById(tabId).style.display = 'block';
             document.querySelectorAll('#learn-mobile .mobile-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function openMobileCaseTab(tabId) {
+            document.querySelectorAll('#cases-mobile .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#cases-mobile .mobile-tabs h5').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
@@ -1171,10 +1940,21 @@
             event.target.classList.add('active');
         }
 
+        function openDesktopCaseTab(tabId) {
+            document.querySelectorAll('#cases-desktop .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#cases-desktop .desktop-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
         // Quiz functions
-        function selectOption(element) {
-            // Remove selected class from all options in this question
-            const options = element.parentElement.querySelectorAll('.quiz-option');
+        function selectQuizOption(element, quizId) {
+            // Remove selected class from all options in this quiz
+            const options = document.getElementById(quizId).querySelectorAll('.quiz-option');
             options.forEach(option => {
                 option.classList.remove('selected');
             });
@@ -1183,15 +1963,14 @@
             element.classList.add('selected');
         }
 
-        function checkAnswer(questionId, correctAnswer) {
-            const feedback = document.getElementById(questionId + '-feedback');
-            const options = document.querySelectorAll('.quiz-option');
+        function checkQuizAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById(quizId + '-feedback');
+            const options = document.getElementById(quizId).querySelectorAll('.quiz-option');
             let selectedOption = null;
 
             // Find the selected option
             options.forEach(option => {
-                if (option.classList.contains('selected') &&
-                    option.parentElement.contains(feedback)) {
+                if (option.classList.contains('selected')) {
                     selectedOption = option;
                 }
             });
@@ -1213,6 +1992,222 @@
                 feedback.textContent = "Incorrect. Try again!";
                 feedback.className = "quiz-feedback incorrect";
                 feedback.style.display = 'block';
+            }
+        }
+
+        // Case functions - FIXED VERSION
+        function selectCaseChoice(element, stepId) {
+            // Remove selected class from all options in this step
+            const stepElement = document.getElementById(stepId);
+            const choices = stepElement.querySelectorAll('.case-choice');
+            choices.forEach(choice => {
+                choice.classList.remove('selected');
+            });
+
+            // Add selected class to clicked option
+            element.classList.add('selected');
+        }
+
+        function checkCaseAnswer(stepId) {
+            const stepElement = document.getElementById(stepId);
+            const choices = stepElement.querySelectorAll('.case-choice');
+            let selectedChoice = null;
+
+            // Find the selected choice
+            choices.forEach(choice => {
+                if (choice.classList.contains('selected')) {
+                    selectedChoice = choice;
+                }
+            });
+
+            if (!selectedChoice) {
+                alert("Please select an option first.");
+                return;
+            }
+
+            // Hide all outcomes first
+            const outcomes = stepElement.querySelectorAll('.case-outcome');
+            outcomes.forEach(outcome => {
+                outcome.style.display = 'none';
+            });
+
+            // Show the selected outcome
+            const choiceLetter = selectedChoice.textContent.trim().charAt(1);
+            const outcomeId = stepId + '-' + choiceLetter.toLowerCase();
+            const outcome = document.getElementById(outcomeId);
+            if (outcome) {
+                outcome.style.display = 'block';
+                
+                // Mark step as completed if it's a safe choice
+                if (choiceLetter === 'B' || choiceLetter === 'C') {
+                    completedSteps[stepId] = true;
+                    
+                    // Check if both steps are completed to show congratulations
+                    if (stepId.includes('case1-step1') && completedSteps['case1-step2']) {
+                        showCongratulations(stepId);
+                    } else if (stepId.includes('case1-step2') && completedSteps['case1-step1']) {
+                        showCongratulations(stepId);
+                    }
+                }
+            }
+        }
+
+        // Case #2 functions
+        function checkCase2Answer(level) {
+            const isMobile = level.includes('mobile');
+            
+            if (level === 'level1' || level === 'level1-mobile') {
+                const passphraseInput = isMobile ? document.getElementById('passphrase-input-mobile') : document.getElementById('passphrase-input');
+                const resultDiv = isMobile ? document.getElementById('decrypted-text-mobile') : document.getElementById('decrypted-text');
+                const completeDiv = isMobile ? document.getElementById('level-1-complete-mobile') : document.getElementById('level-1-complete');
+                
+                const passphrase = passphraseInput.value.toLowerCase();
+                
+                if (passphrase === 'silent whispers') {
+                    const encryptedText = 'Xlmw irgvctxih ewi xli asvphw sj xli qerxsvw mw xli higvctxih xs xli wlmw.';
+                    const decryptedText = caesarCipher(encryptedText, 26 - 4);
+                    resultDiv.textContent = `> Decrypted message: ${decryptedText}`;
+                    resultDiv.style.display = 'block';
+                    completeDiv.style.display = 'block';
+                    
+                    // Mark level as completed and unlock next tab
+                    if (isMobile) {
+                        case2Progress.level1Mobile = true;
+                        unlockCase2Tab('forged-mobile');
+                    } else {
+                        case2Progress.level1 = true;
+                        unlockCase2Tab('forged');
+                    }
+                } else {
+                    alert('Incorrect passphrase. Listen carefully to the audio file.');
+                }
+            }
+            else if (level === 'level2' || level === 'level2-mobile') {
+                const authorInput = isMobile ? document.getElementById('author-input-mobile') : document.getElementById('author-input');
+                const resultDiv = isMobile ? document.getElementById('author-result-mobile') : document.getElementById('author-result');
+                const completeDiv = isMobile ? document.getElementById('level-2-complete-mobile') : document.getElementById('level-2-complete');
+                
+                const author = authorInput.value.trim();
+                
+                if (author.toLowerCase() === 'j. smith' || author.toLowerCase() === 'j smith') {
+                    resultDiv.textContent = '> Correct! The original author is J. Smith, revealing the image was doctored by Echo Corporation.';
+                    resultDiv.style.display = 'block';
+                    completeDiv.style.display = 'block';
+                    
+                    // Mark level as completed and unlock next tab
+                    if (isMobile) {
+                        case2Progress.level2Mobile = true;
+                        unlockCase2Tab('distribution-mobile');
+                    } else {
+                        case2Progress.level2 = true;
+                        unlockCase2Tab('distribution');
+                    }
+                } else {
+                    alert('Incorrect author name. Check the metadata analysis results.');
+                }
+            }
+            else if (level === 'level3' || level === 'level3-mobile') {
+                const urlInput = isMobile ? document.getElementById('url-input-mobile') : document.getElementById('url-input');
+                const resultDiv = isMobile ? document.getElementById('url-result-mobile') : document.getElementById('url-result');
+                const completeDiv = isMobile ? document.getElementById('level-3-complete-mobile') : document.getElementById('level-3-complete');
+                
+                const url = urlInput.value.trim();
+                
+                if (url.toLowerCase() === 'http://news.com/echo_target') {
+                    resultDiv.textContent = '> Correct! The decoded URL is http://news.com/echo_target. This reveals their target website.';
+                    resultDiv.style.display = 'block';
+                    completeDiv.style.display = 'block';
+                    
+                    // Mark level as completed and unlock next tab
+                    if (isMobile) {
+                        case2Progress.level3Mobile = true;
+                        unlockCase2Tab('blueprint-mobile');
+                    } else {
+                        case2Progress.level3 = true;
+                        unlockCase2Tab('blueprint');
+                    }
+                } else {
+                    alert('Incorrect URL. Use the Caesar Cipher tool with shift value 2.');
+                }
+            }
+            else if (level === 'level4' || level === 'level4-mobile') {
+                const resultDiv = isMobile ? document.getElementById('blueprint-result-mobile') : document.getElementById('blueprint-result');
+                const completeDiv = isMobile ? document.getElementById('level-4-complete-mobile') : document.getElementById('level-4-complete');
+                
+                const encryptedText = 'Gur Ehpb Pbecfr\'f zvffvba vf gb qrfgebl gur serr jro. Jr jvyy hfr qvfgenpgvba naq qvfurfvba gb pbageby gur zffntr. Bhe svefg chmmyr: "Gur jbeyq vf va qnexarff, naq bayl jr pna cnff gur yvtug."';
+                const decryptedText = caesarCipher(encryptedText, 26 - 13);
+                resultDiv.textContent = `> Decrypted blueprint: ${decryptedText}`;
+                resultDiv.style.display = 'block';
+                completeDiv.style.display = 'block';
+                
+                // Mark level as completed
+                if (isMobile) {
+                    case2Progress.level4Mobile = true;
+                } else {
+                    case2Progress.level4 = true;
+                }
+            }
+        }
+
+        // Unlock Case #2 tabs
+        function unlockCase2Tab(tabName) {
+            const isMobile = tabName.includes('mobile');
+            const tabHeader = isMobile ? document.getElementById(tabName + '-tab-header') : document.getElementById(tabName + '-tab-header');
+            
+            if (tabHeader) {
+                tabHeader.classList.remove('locked');
+                tabHeader.classList.add('active');
+                
+                // Update tab content visibility
+                const allTabs = document.querySelectorAll(isMobile ? '#case2-tab-mobile .tab' : '#case2-tab-desktop .tab');
+                allTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                const allContents = document.querySelectorAll(isMobile ? '#case2-tab-mobile .tab-content' : '#case2-tab-desktop .tab-content');
+                allContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                tabHeader.classList.add('active');
+                document.getElementById(tabName + '-tab').classList.add('active');
+            }
+        }
+
+        // Caesar cipher function
+        function caesarCipher(text, shift) {
+            let result = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                
+                if (char.match(/[a-z]/i)) {
+                    const code = text.charCodeAt(i);
+                    
+                    if (code >= 65 && code <= 90) {
+                        char = String.fromCharCode(((code - 65 + shift) % 26) + 65);
+                    } else if (code >= 97 && code <= 122) {
+                        char = String.fromCharCode(((code - 97 + shift) % 26) + 97);
+                    }
+                }
+                
+                result += char;
+            }
+            
+            return result;
+        }
+
+        function showCongratulations(stepId) {
+            // Determine if we're in desktop or mobile
+            const isMobile = stepId.includes('mobile');
+            const endingId = isMobile ? 'case1-ending-mobile' : 'case1-ending';
+            const ending = document.getElementById(endingId);
+            
+            if (ending) {
+                ending.style.display = 'block';
+                
+                // Scroll to the congratulations section
+                ending.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -1324,6 +2319,3 @@
     </script>
 </body>
 </html>
-
-
-
