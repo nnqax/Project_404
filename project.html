@@ -555,7 +555,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 onclick="openMobileWindow('system-mobile'); setMobileActive(this)" id="system-mobile-btn" class="mobile-active">System</h2>
+                    <h2 onclick="openMobileWindow('system-mobile'); setMobileActive(this)" id="system-mobile-btn" class="mobile-inactive">System</h2>
                 </div>
                 <div class="col">
                     <h2 onclick="openMobileWindow('learn-mobile'); setMobileActive(this)" id="learn-mobile-btn" class="mobile-inactive">Learn</h2>
@@ -711,7 +711,7 @@
     </div>
 
     <!-- Mobile Windows -->
-    <div id="system-mobile" class="mobile-window active">
+    <div id="system-mobile" class="mobile-window">
         <div class="windownav">
             <h3>System</h3>
             <div class="x" onclick="closeMobileWindow('system-mobile')">✕</div>
@@ -1037,10 +1037,13 @@
         // Initialize based on screen size
         window.addEventListener('load', function() {
             if (window.innerWidth <= 768) {
+                // Mobile: Open System automatically
                 openMobileWindow('system-mobile');
                 setMobileActive(document.getElementById('system-mobile-btn'));
             } else {
+                // Desktop: Just make windows draggable, NO windows open automatically
                 makeWindowsDraggable();
+                // No windows open - clean desktop!
             }
         });
 
@@ -1048,6 +1051,10 @@
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 makeWindowsDraggable();
+            } else {
+                // If switching to mobile, open system
+                openMobileWindow('system-mobile');
+                setMobileActive(document.getElementById('system-mobile-btn'));
             }
         });
     </script>
