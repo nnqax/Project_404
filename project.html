@@ -477,6 +477,76 @@
             max-height: 1000px;
         }
 
+        /* Quiz Styles */
+        .quiz-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .quiz-option.selected {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: #fff;
+        }
+
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #0f0;
+            color: #0f0;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #f00;
+            color: #f00;
+        }
+
+        .submit-btn {
+            background: var(--neon-green);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #2ae000;
+        }
+
         /* Cyberpunk scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -618,15 +688,21 @@
             <div class="content" id="about-tab-desktop">
                 <h4>Our Mission: Fighting Digital Deception</h4>
                 <section>
-                    <p>In today's digital world, cyber threats have evolved beyond simple viruses to sophisticated campaigns of misinformation, automated bots, and coordinated phishing attacks.</p>
-                    <p>Our platform transforms cybersecurity education into an engaging, interactive experience where you learn by doing. Through realistic scenarios and hands-on challenges, you'll develop the skills needed to:</p>
+                    <p>At [Project 404], our purpose is to empower individuals with the skills to see beyond digital illusions.</p>
+                    <p>In today's cyber landscape:</p>
                     <ul>
-                        <li>Detect and analyze propaganda campaigns</li>
-                        <li>Identify and track automated bot networks</li>
-                        <li>Verify information using OSINT techniques</li>
-                        <li>Understand cryptographic principles for data verification</li>
-                        <li>Analyze digital evidence using forensic methods</li>
+                        <li>Propaganda manipulates public opinion.</li>
+                        <li>Fake news spreads faster than facts.</li>
+                        <li>Bots amplify lies to look like truth.</li>
+                        <li>Hackers and scammers exploit human trust.</li>
                     </ul>
+                    <p>To counter this, three disciplines stand at the core of our approach:</p>
+                    <ul>
+                        <li><strong>OSINT (Open Source Intelligence):</strong> Finding truth in public data, from social media trails to geospatial intelligence.</li>
+                        <li><strong>Digital Forensics:</strong> Preserving and analyzing digital evidence, exposing the hidden fingerprints left in files and systems.</li>
+                        <li><strong>Cryptography:</strong> Protecting and decoding information, breaking the ciphers that attackers use to conceal their plans.</li>
+                    </ul>
+                    <p>Together, these fields give learners not only knowledge, but also the mindset of an investigator. Our purpose is to make these tools accessible, engaging, and practical — turning awareness into defense.</p>
                 </section>
             </div>
             <div class="content" id="sitemap-tab-desktop" style="display: none;">
@@ -669,23 +745,92 @@
                     <h1>OSINT Fundamentals</h1>
                     <p>Learn Open Source Intelligence techniques to uncover digital footprints</p>
                 </div>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            Introduction to OSINT
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>OSINT (Open Source Intelligence) involves collecting information from publicly available sources to identify threats, verify information, and track malicious activities.</p>
-                        </div>
-                    </div>
+
+                <section>
+                    <h4>OSINT (Open Source Intelligence)</h4>
+                    <p>OSINT is about finding hidden truths in public spaces. By analyzing social media, open records, or geotags in photos, investigators can uncover valuable insights without ever touching private data.</p>
+                    <p>👉 <strong>Example:</strong> A fake account may post a photo with location metadata still attached. OSINT tools can reveal where and when the photo was actually taken.</p>
+                </section>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">OSINT relies mainly on:</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) Private hacking tools</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) Publicly available data</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) Secret government databases</div>
+                    <button class="submit-btn" onclick="checkAnswer('osint1', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="osint1-feedback"></div>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">GEOINT is a branch of OSINT that focuses on:</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) Encryption</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) Location and mapping data</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) Social media bots</div>
+                    <button class="submit-btn" onclick="checkAnswer('osint2', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="osint2-feedback"></div>
                 </div>
             </div>
+
             <div class="content" id="crypto-tab-desktop" style="display: none;">
-                <h1>Cryptography Content</h1>
+                <div class="faq-header">
+                    <h1>Cryptography</h1>
+                    <p>Protecting and decoding digital information</p>
+                </div>
+
+                <section>
+                    <h4>Cryptography</h4>
+                    <p>Cryptography protects digital information by turning it into unreadable code that only the right key can unlock. Attackers also use cryptography — hiding disinformation in coded messages or embedding secrets in files.</p>
+                    <p>👉 <strong>Example:</strong> A propaganda group might encrypt their instructions so only insiders with the passphrase can read them. Investigators must break the code to reveal the plan.</p>
+                </section>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">Which type of cryptography uses a pair of keys (public & private)?</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) Symmetric cryptography</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) Asymmetric cryptography</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) Hash functions</div>
+                    <button class="submit-btn" onclick="checkAnswer('crypto1', 'b')">Check Answer</button>
+                    <div class="quiz-feedback" id="crypto1-feedback"></div>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">Cryptography ensures that:</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) Only authorized people can read the message</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) Messages are spread faster</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) Files cannot be deleted</div>
+                    <button class="submit-btn" onclick="checkAnswer('crypto2', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="crypto2-feedback"></div>
+                </div>
             </div>
+
             <div class="content" id="forensics-tab-desktop" style="display: none;">
-                <h1>Forensics Content</h1>
+                <div class="faq-header">
+                    <h1>Digital Forensics</h1>
+                    <p>Uncovering and preserving digital evidence</p>
+                </div>
+
+                <section>
+                    <h4>Digital Forensics</h4>
+                    <p>Forensics is the science of uncovering and preserving digital evidence. From deleted files to hidden metadata, forensic experts follow the footprints attackers leave behind.</p>
+                    <p>👉 <strong>Example:</strong> A fake news image may look normal, but its metadata shows it was created with editing software days before the "breaking event" it claims to depict.</p>
+                </section>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">Which of these can digital forensics uncover?</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) Deleted chat logs</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) Secret PINs of bank accounts</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) Handwritten notes</div>
+                    <button class="submit-btn" onclick="checkAnswer('forensics1', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="forensics1-feedback"></div>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">Why is forensics important in cybercrime?</div>
+                    <div class="quiz-option" onclick="selectOption(this)">a) It helps investigators trace and preserve digital evidence</div>
+                    <div class="quiz-option" onclick="selectOption(this)">b) It allows hackers to erase their tracks completely</div>
+                    <div class="quiz-option" onclick="selectOption(this)">c) It spreads fake news faster</div>
+                    <button class="submit-btn" onclick="checkAnswer('forensics2', 'a')">Check Answer</button>
+                    <div class="quiz-feedback" id="forensics2-feedback"></div>
+                </div>
             </div>
         </div>
 
@@ -729,15 +874,21 @@
         <div class="content" id="about-tab-mobile">
             <h4>Our Mission: Fighting Digital Deception</h4>
             <section>
-                <p>In today's digital world, cyber threats have evolved beyond simple viruses to sophisticated campaigns of misinformation, automated bots, and coordinated phishing attacks.</p>
-                <p>Our platform transforms cybersecurity education into an engaging, interactive experience where you learn by doing. Through realistic scenarios and hands-on challenges, you'll develop the skills needed to:</p>
+                <p>At [Project 404], our purpose is to empower individuals with the skills to see beyond digital illusions.</p>
+                <p>In today's cyber landscape:</p>
                 <ul>
-                    <li>Detect and analyze propaganda campaigns</li>
-                    <li>Identify and track automated bot networks</li>
-                    <li>Verify information using OSINT techniques</li>
-                    <li>Understand cryptographic principles for data verification</li>
-                    <li>Analyze digital evidence using forensic methods</li>
+                    <li>Propaganda manipulates public opinion.</li>
+                    <li>Fake news spreads faster than facts.</li>
+                    <li>Bots amplify lies to look like truth.</li>
+                    <li>Hackers and scammers exploit human trust.</li>
                 </ul>
+                <p>To counter this, three disciplines stand at the core of our approach:</p>
+                <ul>
+                    <li><strong>OSINT (Open Source Intelligence):</strong> Finding truth in public data, from social media trails to geospatial intelligence.</li>
+                    <li><strong>Digital Forensics:</strong> Preserving and analyzing digital evidence, exposing the hidden fingerprints left in files and systems.</li>
+                    <li><strong>Cryptography:</strong> Protecting and decoding information, breaking the ciphers that attackers use to conceal their plans.</li>
+                </ul>
+                <p>Together, these fields give learners not only knowledge, but also the mindset of an investigator. Our purpose is to make these tools accessible, engaging, and practical — turning awareness into defense.</p>
             </section>
         </div>
 
@@ -783,25 +934,92 @@
                 <h1>OSINT Fundamentals</h1>
                 <p>Learn Open Source Intelligence techniques to uncover digital footprints</p>
             </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        Introduction to OSINT
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>OSINT (Open Source Intelligence) involves collecting information from publicly available sources to identify threats, verify information, and track malicious activities.</p>
-                    </div>
-                </div>
+
+            <section>
+                <h4>OSINT (Open Source Intelligence)</h4>
+                <p>OSINT is about finding hidden truths in public spaces. By analyzing social media, open records, or geotags in photos, investigators can uncover valuable insights without ever touching private data.</p>
+                <p>👉 <strong>Example:</strong> A fake account may post a photo with location metadata still attached. OSINT tools can reveal where and when the photo was actually taken.</p>
+            </section>
+
+            <div class="quiz-container">
+                <div class="quiz-question">OSINT relies mainly on:</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) Private hacking tools</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) Publicly available data</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) Secret government databases</div>
+                <button class="submit-btn" onclick="checkAnswer('osint1-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="osint1-mobile-feedback"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">GEOINT is a branch of OSINT that focuses on:</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) Encryption</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) Location and mapping data</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) Social media bots</div>
+                <button class="submit-btn" onclick="checkAnswer('osint2-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="osint2-mobile-feedback"></div>
             </div>
         </div>
 
         <div class="content" id="crypto-tab-mobile" style="display: none;">
-            <h1>Cryptography Content</h1>
+            <div class="faq-header">
+                <h1>Cryptography</h1>
+                <p>Protecting and decoding digital information</p>
+            </div>
+
+            <section>
+                <h4>Cryptography</h4>
+                <p>Cryptography protects digital information by turning it into unreadable code that only the right key can unlock. Attackers also use cryptography — hiding disinformation in coded messages or embedding secrets in files.</p>
+                <p>👉 <strong>Example:</strong> A propaganda group might encrypt their instructions so only insiders with the passphrase can read them. Investigators must break the code to reveal the plan.</p>
+            </section>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Which type of cryptography uses a pair of keys (public & private)?</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) Symmetric cryptography</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) Asymmetric cryptography</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) Hash functions</div>
+                <button class="submit-btn" onclick="checkAnswer('crypto1-mobile', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="crypto1-mobile-feedback"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Cryptography ensures that:</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) Only authorized people can read the message</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) Messages are spread faster</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) Files cannot be deleted</div>
+                <button class="submit-btn" onclick="checkAnswer('crypto2-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="crypto2-mobile-feedback"></div>
+            </div>
         </div>
 
         <div class="content" id="forensics-tab-mobile" style="display: none;">
-            <h1>Forensics Content</h1>
+            <div class="faq-header">
+                <h1>Digital Forensics</h1>
+                <p>Uncovering and preserving digital evidence</p>
+            </div>
+
+            <section>
+                <h4>Digital Forensics</h4>
+                <p>Forensics is the science of uncovering and preserving digital evidence. From deleted files to hidden metadata, forensic experts follow the footprints attackers leave behind.</p>
+                <p>👉 <strong>Example:</strong> A fake news image may look normal, but its metadata shows it was created with editing software days before the "breaking event" it claims to depict.</p>
+            </section>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Which of these can digital forensics uncover?</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) Deleted chat logs</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) Secret PINs of bank accounts</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) Handwritten notes</div>
+                <button class="submit-btn" onclick="checkAnswer('forensics1-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="forensics1-mobile-feedback"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Why is forensics important in cybercrime?</div>
+                <div class="quiz-option" onclick="selectOption(this)">a) It helps investigators trace and preserve digital evidence</div>
+                <div class="quiz-option" onclick="selectOption(this)">b) It allows hackers to erase their tracks completely</div>
+                <div class="quiz-option" onclick="selectOption(this)">c) It spreads fake news faster</div>
+                <button class="submit-btn" onclick="checkAnswer('forensics2-mobile', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="forensics2-mobile-feedback"></div>
+            </div>
         </div>
     </div>
 
@@ -950,6 +1168,51 @@
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        // Quiz functions
+        function selectOption(element) {
+            // Remove selected class from all options in this question
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Add selected class to clicked option
+            element.classList.add('selected');
+        }
+
+        function checkAnswer(questionId, correctAnswer) {
+            const feedback = document.getElementById(questionId + '-feedback');
+            const options = document.querySelectorAll('.quiz-option');
+            let selectedOption = null;
+
+            // Find the selected option
+            options.forEach(option => {
+                if (option.classList.contains('selected') &&
+                    option.parentElement.contains(feedback)) {
+                    selectedOption = option;
+                }
+            });
+
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer first.";
+                feedback.className = "quiz-feedback incorrect";
+                feedback.style.display = 'block';
+                return;
+            }
+
+            const userAnswer = selectedOption.textContent.trim().charAt(0);
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done.";
+                feedback.className = "quiz-feedback correct";
+                feedback.style.display = 'block';
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.className = "quiz-feedback incorrect";
+                feedback.style.display = 'block';
+            }
         }
 
         // Shared functions
