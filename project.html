@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 404 - Uncover the Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #39ff14;
+            --bg: #000000;
+            --neon-green: #39ff14;
+            --window-bg: #0a0a0a;
+            --text-color: #39ff14;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        /* Mobile Navigation */
+        #mobilenav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--neon-green);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+
+        #mobilenav .container {
+            height: 100%;
+            padding: 0;
+        }
+
+        #mobilenav .row {
+            height: 100%;
+            margin: 0;
+        }
+
+        #mobilenav .col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0 5px;
+        }
+
+        #mobilenav h2 {
+            margin: 0;
+            font-size: 14px;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .mobile-active {
+            background: var(--neon-green);
+            color: #000;
+        }
+
+        .mobile-inactive {
+            background: transparent;
+            color: var(--neon-green);
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+            z-index: 400;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.10626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.10626; }
+            30% { opacity: 0.18128; }
+            35% { opacity: 0.23604; }
+        }
+
+        .crt::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.02);
+            opacity: 0;
+            z-index: 400;
+            pointer-events: none;
+            animation: flicker 0.2s infinite;
+        }
+
+        /* DESKTOP STYLES */
+        .desktop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(var(--neon-green) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+        }
+
+        .icon {
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .icon img {
+            width: 64px;
+            height: 64px;
+            filter: drop-shadow(0 0 5px var(--neon-green));
+        }
+
+        .icon h3 {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .mascot {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .mascot img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px var(--neon-green));
+        }
+
+        /* Desktop Windows */
+        .desktop-window {
+            position: absolute;
+            background: var(--window-bg);
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            display: none;
+            overflow: hidden;
+            z-index: 100;
+            min-width: 300px;
+            min-height: 200px;
+        }
+
+        /* Mobile Windows */
+        .mobile-window {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 60px);
+            background: var(--window-bg);
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            z-index: 500;
+        }
+
+        .mobile-window.active {
+            display: block;
+        }
+
+        .windownav {
+            background: var(--neon-green);
+            color: #000;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--neon-green);
+            cursor: move;
+            user-select: none;
+        }
+
+        .windownav h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .x {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .x:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .web-bar {
+            background: #111;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        /* Desktop Tabs */
+        .desktop-tabs {
+            display: flex;
+        }
+
+        .desktop-tabs h5 {
+            margin: 0;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-right: 1px solid var(--neon-green);
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-tabs h5:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .desktop-tabs h5.active {
+            background: var(--neon-green);
+            color: #000;
+        }
+
+        /* Mobile Tabs - Side by Side */
+        .mobile-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .mobile-tabs h5 {
+            margin: 0;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-right: 1px solid var(--neon-green);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .mobile-tabs h5:last-child {
+            border-right: none;
+        }
+
+        .mobile-tabs h5:hover {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .mobile-tabs h5.active {
+            background: var(--neon-green);
+            color: #000;
+        }
+
+        .browser {
+            padding: 8px 15px;
+            background: #111;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .browser h3 {
+            margin: 0;
+            font-size: 12px;
+            color: var(--neon-green);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .content {
+            padding: 20px;
+            height: calc(100% - 120px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .content h4 {
+            color: var(--neon-green);
+            border-bottom: 1px solid var(--neon-green);
+            padding-bottom: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .content section {
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-green);
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 5px;
+        }
+
+        a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid var(--neon-green);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .start-menu {
+            background: var(--neon-green);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .start-menu-content {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .start-menu-content h4 {
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .start-menu-content a {
+            display: block;
+            padding: 5px 0;
+            color: var(--neon-green);
+        }
+
+        .clock {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--neon-green);
+        }
+
+        /* FAQ Styles */
+        .faq-header {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+
+        .faq-header h1 {
+            font-size: 24px;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .faq-container {
+            max-width: 100%;
+            margin: 0 auto 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            background-color: rgba(10, 30, 10, 0.7);
+        }
+
+        .faq-item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--neon-green);
+            font-size: 16px;
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            padding: 0 15px 15px;
+            max-height: 1000px;
+        }
+
+        /* Cyberpunk scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-green);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2ae000;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .desktop {
+                display: none;
+            }
+
+            .taskbar {
+                display: none;
+            }
+
+            #mobilenav {
+                display: flex;
+            }
+
+            .desktop-window {
+                display: none !important;
+            }
+
+            .content {
+                padding: 15px;
+                height: calc(100% - 140px);
+            }
+
+            .content h4 {
+                font-size: 16px;
+            }
+
+            .content section {
+                padding: 12px;
+            }
+
+            .faq-header h1 {
+                font-size: 20px;
+            }
+
+            .faq-question {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .mobile-tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .mobile-tabs h5 {
+                padding: 12px 15px;
+                font-size: 13px;
+                min-width: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div id="mobilenav">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 onclick="openMobileWindow('system-mobile'); setMobileActive(this)" id="system-mobile-btn" class="mobile-active">System</h2>
+                </div>
+                <div class="col">
+                    <h2 onclick="openMobileWindow('learn-mobile'); setMobileActive(this)" id="learn-mobile-btn" class="mobile-inactive">Learn</h2>
+                </div>
+                <div class="col">
+                    <h2 onclick="openMobileWindow('cases-mobile'); setMobileActive(this)" id="cases-mobile-btn" class="mobile-inactive">Cases</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="crt"></div>
+
+    <!-- Desktop View -->
+    <div class="desktop">
+        <div class="icon-container">
+            <!-- System icon on top -->
+            <div class="icon" onclick="openWindow('system-desktop')">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxwYXRoIGQ9Ik0xNiAxNkg0OFY0OEgxNlYxNloiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yNCAyNEg0MFY0MEgyNFYyNFoiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xNiAxNkwzMiA4IiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="System">
+                <h3>System</h3>
+            </div>
+
+            <!-- Mascot in the middle -->
+            <div class="mascot">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMDAwMDAwIi8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjQwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI0NSIgY3k9IjQ1IiByPSI4IiBmaWxsPSIjMzlmZjE0Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNDUiIHI9IjgiIGZpbGw9IiMzOWZmMTQiLz4KPHBhdGggZD0iTTQ1IDgwUTU1IDkwIDc1IDgwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Mascot">
+            </div>
+
+            <!-- Learn and Cases icons side by side -->
+            <div class="icon-row">
+                <!-- Cases icon on the left -->
+                <div class="icon" onclick="openWindow('cases-desktop')">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjIwIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMjQgMjRINDBWMzZIMjRWMjRaIiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMjggMjhIMzZWMzZIMjhWMjhaIiBmaWxsPSIjMzlmZjE0Ii8+Cjwvc3ZnPgo=" alt="Cases">
+                    <h3>Cases</h3>
+                </div>
+
+                <!-- Learn icon on the right -->
+                <div class="icon" onclick="openWindow('learn-desktop')">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAwMDAwIi8+CjxwYXRoIGQ9Ik0xMiAxMkg1MlY1MkgxMlYxMloiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yMCAyMEg0NFY0NEgyMFYyMFoiIHN0cm9rZT0iIzM5ZmYxNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzNlYzNkgyOFYyOFoiIGZpbGw9IiMzOWZmMTQiLz4KPHBhdGggZD0iTTIwIDI4TDI4IDM2IiBzdHJva2U9IiMzOWZmMTQiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="Learn">
+                    <h3>Learn</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Windows -->
+        <div id="system-desktop" class="desktop-window">
+            <div class="windownav">
+                <h3>System</h3>
+                <div class="x" onclick="closeWindow('system-desktop')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="desktop-tabs">
+                    <h5 class="active" onclick="openDesktopTab('about-tab-desktop')">About & Purpose</h5>
+                    <h5 onclick="openDesktopTab('sitemap-tab-desktop')">Site Map</h5>
+                    <h5 onclick="openDesktopTab('team-tab-desktop')">Our Team</h5>
+                </div>
+                <div class="browser">
+                    <h3>cyberlearn://system/about</h3>
+                </div>
+            </div>
+            <div class="content" id="about-tab-desktop">
+                <h4>Our Mission: Fighting Digital Deception</h4>
+                <section>
+                    <p>In today's digital world, cyber threats have evolved beyond simple viruses to sophisticated campaigns of misinformation, automated bots, and coordinated phishing attacks.</p>
+                    <p>Our platform transforms cybersecurity education into an engaging, interactive experience where you learn by doing. Through realistic scenarios and hands-on challenges, you'll develop the skills needed to:</p>
+                    <ul>
+                        <li>Detect and analyze propaganda campaigns</li>
+                        <li>Identify and track automated bot networks</li>
+                        <li>Verify information using OSINT techniques</li>
+                        <li>Understand cryptographic principles for data verification</li>
+                        <li>Analyze digital evidence using forensic methods</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="content" id="sitemap-tab-desktop" style="display: none;">
+                <h4>Site Navigation Map</h4>
+                <section>
+                    <h5>Desktop Applications:</h5>
+                    <ul>
+                        <li><strong>System</strong> - About, site map, and team information</li>
+                        <li><strong>Learn</strong> - Educational content in OSINT, Cryptography, and Forensics</li>
+                        <li><strong>Cases</strong> - Monthly cybersecurity challenges and scenarios</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="content" id="team-tab-desktop" style="display: none;">
+                <h4>Our Cybersecurity Team</h4>
+                <section>
+                    <h5>Team Lead - Security Architect</h5>
+                    <p>10+ years in cybersecurity, specializes in threat intelligence and digital forensics.</p>
+                </section>
+            </div>
+        </div>
+
+        <div id="learn-desktop" class="desktop-window">
+            <div class="windownav">
+                <h3>Learn - Cybersecurity Modules</h3>
+                <div class="x" onclick="closeWindow('learn-desktop')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="desktop-tabs">
+                    <h5 class="active" onclick="openDesktopLearnTab('osint-tab-desktop')">OSINT</h5>
+                    <h5 onclick="openDesktopLearnTab('crypto-tab-desktop')">Cryptography</h5>
+                    <h5 onclick="openDesktopLearnTab('forensics-tab-desktop')">Digital Forensics</h5>
+                </div>
+                <div class="browser">
+                    <h3>cyberlearn://modules/osint</h3>
+                </div>
+            </div>
+            <div class="content" id="osint-tab-desktop">
+                <div class="faq-header">
+                    <h1>OSINT Fundamentals</h1>
+                    <p>Learn Open Source Intelligence techniques to uncover digital footprints</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Introduction to OSINT
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>OSINT (Open Source Intelligence) involves collecting information from publicly available sources to identify threats, verify information, and track malicious activities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content" id="crypto-tab-desktop" style="display: none;">
+                <h1>Cryptography Content</h1>
+            </div>
+            <div class="content" id="forensics-tab-desktop" style="display: none;">
+                <h1>Forensics Content</h1>
+            </div>
+        </div>
+
+        <div id="cases-desktop" class="desktop-window">
+            <div class="windownav">
+                <h3>Cases - Real World Challenges</h3>
+                <div class="x" onclick="closeWindow('cases-desktop')">✕</div>
+            </div>
+            <div class="web-bar">
+                <div class="browser">
+                    <h3>cyberlearn://cases/current</h3>
+                </div>
+            </div>
+            <div class="content">
+                <div class="case-container">
+                    <div class="faq-header">
+                        <h1>Case #77: The Propaganda Hunter</h1>
+                        <p>A message appears on your website's "Case Board" from a renowned Propaganda Hunter named Arthur Finch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Windows -->
+    <div id="system-mobile" class="mobile-window active">
+        <div class="windownav">
+            <h3>System</h3>
+            <div class="x" onclick="closeMobileWindow('system-mobile')">✕</div>
+        </div>
+        <div class="web-bar">
+            <div class="mobile-tabs">
+                <h5 class="active" onclick="openMobileTab('about-tab-mobile')">About & Purpose</h5>
+                <h5 onclick="openMobileTab('sitemap-tab-mobile')">Site Map</h5>
+                <h5 onclick="openMobileTab('team-tab-mobile')">Our Team</h5>
+            </div>
+            <div class="browser">
+                <h3>cyberlearn://system/about</h3>
+            </div>
+        </div>
+        <div class="content" id="about-tab-mobile">
+            <h4>Our Mission: Fighting Digital Deception</h4>
+            <section>
+                <p>In today's digital world, cyber threats have evolved beyond simple viruses to sophisticated campaigns of misinformation, automated bots, and coordinated phishing attacks.</p>
+                <p>Our platform transforms cybersecurity education into an engaging, interactive experience where you learn by doing. Through realistic scenarios and hands-on challenges, you'll develop the skills needed to:</p>
+                <ul>
+                    <li>Detect and analyze propaganda campaigns</li>
+                    <li>Identify and track automated bot networks</li>
+                    <li>Verify information using OSINT techniques</li>
+                    <li>Understand cryptographic principles for data verification</li>
+                    <li>Analyze digital evidence using forensic methods</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="content" id="sitemap-tab-mobile" style="display: none;">
+            <h4>Site Navigation Map</h4>
+            <section>
+                <h5>Desktop Applications:</h5>
+                <ul>
+                    <li><strong>System</strong> - About, site map, and team information</li>
+                    <li><strong>Learn</strong> - Educational content in OSINT, Cryptography, and Forensics</li>
+                    <li><strong>Cases</strong> - Monthly cybersecurity challenges and scenarios</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="content" id="team-tab-mobile" style="display: none;">
+            <h4>Our Cybersecurity Team</h4>
+            <section>
+                <h5>Team Lead - Security Architect</h5>
+                <p>10+ years in cybersecurity, specializes in threat intelligence and digital forensics.</p>
+            </section>
+        </div>
+    </div>
+
+    <div id="learn-mobile" class="mobile-window">
+        <div class="windownav">
+            <h3>Learn - Cybersecurity Modules</h3>
+            <div class="x" onclick="closeMobileWindow('learn-mobile')">✕</div>
+        </div>
+        <div class="web-bar">
+            <div class="mobile-tabs">
+                <h5 class="active" onclick="openMobileLearnTab('osint-tab-mobile')">OSINT</h5>
+                <h5 onclick="openMobileLearnTab('crypto-tab-mobile')">Cryptography</h5>
+                <h5 onclick="openMobileLearnTab('forensics-tab-mobile')">Digital Forensics</h5>
+            </div>
+            <div class="browser">
+                <h3>cyberlearn://modules/osint</h3>
+            </div>
+        </div>
+
+        <div class="content" id="osint-tab-mobile">
+            <div class="faq-header">
+                <h1>OSINT Fundamentals</h1>
+                <p>Learn Open Source Intelligence techniques to uncover digital footprints</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Introduction to OSINT
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>OSINT (Open Source Intelligence) involves collecting information from publicly available sources to identify threats, verify information, and track malicious activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="crypto-tab-mobile" style="display: none;">
+            <h1>Cryptography Content</h1>
+        </div>
+
+        <div class="content" id="forensics-tab-mobile" style="display: none;">
+            <h1>Forensics Content</h1>
+        </div>
+    </div>
+
+    <div id="cases-mobile" class="mobile-window">
+        <div class="windownav">
+            <h3>Cases - Real World Challenges</h3>
+            <div class="x" onclick="closeMobileWindow('cases-mobile')">✕</div>
+        </div>
+        <div class="web-bar">
+            <div class="browser">
+                <h3>cyberlearn://cases/current</h3>
+            </div>
+        </div>
+        <div class="content">
+            <div class="case-container">
+                <div class="faq-header">
+                    <h1>Case #77: The Propaganda Hunter</h1>
+                    <p>A message appears on your website's "Case Board" from a renowned Propaganda Hunter named Arthur Finch.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-menu" onclick="toggleStartMenu()">
+            START
+            <div class="start-menu-content" id="startMenu">
+                <h4>Official Social Media</h4>
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="clock" id="clock">00:00:00</div>
+    </div>
+
+    <script>
+        // Window dimensions for desktop
+        const windowSizes = {
+            'system-desktop': { width: 800, height: 600 },
+            'learn-desktop': { width: 900, height: 700 },
+            'cases-desktop': { width: 850, height: 650 }
+        };
+
+        // Mobile-specific functions
+        function openMobileWindow(windowId) {
+            document.querySelectorAll('.mobile-window').forEach(window => {
+                window.classList.remove('active');
+            });
+            document.getElementById(windowId).classList.add('active');
+        }
+
+        function closeMobileWindow(windowId) {
+            document.getElementById(windowId).classList.remove('active');
+        }
+
+        function setMobileActive(element) {
+            document.querySelectorAll('#mobilenav h2').forEach(item => {
+                item.classList.remove('mobile-active');
+                item.classList.add('mobile-inactive');
+            });
+            element.classList.remove('mobile-inactive');
+            element.classList.add('mobile-active');
+        }
+
+        function openMobileTab(tabId) {
+            document.querySelectorAll('#system-mobile .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#system-mobile .mobile-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function openMobileLearnTab(tabId) {
+            document.querySelectorAll('#learn-mobile .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#learn-mobile .mobile-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Desktop functions
+        function openWindow(windowId) {
+            const window = document.getElementById(windowId);
+            if (window.style.display !== 'block') {
+                centerWindow(windowId);
+            }
+            window.style.display = 'block';
+            bringToFront(windowId);
+        }
+
+        function centerWindow(windowId) {
+            const window = document.getElementById(windowId);
+            const sizes = windowSizes[windowId];
+
+            if (sizes) {
+                const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+                const screenHeight = window.innerHeight || document.documentElement.clientHeight;
+
+                const left = Math.max(0, (screenWidth - sizes.width) / 2);
+                const top = Math.max(0, (screenHeight - sizes.height) / 2);
+
+                window.style.width = sizes.width + 'px';
+                window.style.height = sizes.height + 'px';
+                window.style.left = left + 'px';
+                window.style.top = top + 'px';
+            }
+        }
+
+        function closeWindow(windowId) {
+            document.getElementById(windowId).style.display = 'none';
+        }
+
+        function bringToFront(windowId) {
+            document.querySelectorAll('.desktop-window').forEach(window => {
+                window.style.zIndex = '100';
+            });
+            document.getElementById(windowId).style.zIndex = '200';
+        }
+
+        function openDesktopTab(tabId) {
+            document.querySelectorAll('#system-desktop .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#system-desktop .desktop-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function openDesktopLearnTab(tabId) {
+            document.querySelectorAll('#learn-desktop .content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('#learn-desktop .desktop-tabs h5').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Shared functions
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isOpen = answer.classList.contains('show');
+
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question span').forEach(indicator => {
+                indicator.textContent = '+';
+            });
+
+            if (!isOpen) {
+                answer.classList.add('show');
+                element.querySelector('span').textContent = '-';
+            }
+        }
+
+        function toggleStartMenu() {
+            const startMenu = document.getElementById('startMenu');
+            startMenu.style.display = startMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close start menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const startMenu = document.getElementById('startMenu');
+            const startButton = document.querySelector('.start-menu');
+            if (!startButton.contains(event.target) && !startMenu.contains(event.target)) {
+                startMenu.style.display = 'none';
+            }
+        });
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Make windows draggable
+        let dragData = null;
+
+        function makeWindowsDraggable() {
+            document.querySelectorAll('.desktop-window .windownav').forEach(nav => {
+                nav.addEventListener('mousedown', startDrag);
+            });
+        }
+
+        function startDrag(e) {
+            const window = this.parentElement;
+            bringToFront(window.id);
+
+            dragData = {
+                window: window,
+                startX: e.clientX,
+                startY: e.clientY,
+                startLeft: parseInt(window.style.left) || 0,
+                startTop: parseInt(window.style.top) || 0
+            };
+
+            document.addEventListener('mousemove', doDrag);
+            document.addEventListener('mouseup', stopDrag);
+        }
+
+        function doDrag(e) {
+            if (!dragData) return;
+
+            const dx = e.clientX - dragData.startX;
+            const dy = e.clientY - dragData.startY;
+
+            dragData.window.style.left = (dragData.startLeft + dx) + 'px';
+            dragData.window.style.top = (dragData.startTop + dy) + 'px';
+        }
+
+        function stopDrag() {
+            dragData = null;
+            document.removeEventListener('mousemove', doDrag);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+
+        // Initialize based on screen size
+        window.addEventListener('load', function() {
+            if (window.innerWidth <= 768) {
+                openMobileWindow('system-mobile');
+                setMobileActive(document.getElementById('system-mobile-btn'));
+            } else {
+                makeWindowsDraggable();
+            }
+        });
+
+        // Reinitialize on resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                makeWindowsDraggable();
+            }
+        });
+    </script>
+</body>
+</html>
